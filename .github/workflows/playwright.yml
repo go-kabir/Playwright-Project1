@@ -5,6 +5,12 @@ on:
   pull_request:
     branches: [ main, master ]
   workflow_dispatch: 
+    inputs:
+      test_file:
+        description: 'Test file/folder to run (e.g., tests/Drodown.spec.ts). Leave blank to run all.'
+        required: false
+        default: ''
+
 jobs:
   test:
     timeout-minutes: 60
@@ -18,8 +24,17 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    
+    # Modified step to dynamically handle either a single test file or all tests
     - name: Run Playwright tests
-      run: npx playwright test
+      run: |
+        if [ -n "${{ github.event.inputs.test_file }}" ]; then
+          npx playwright test ${{ github.event.inputs.test_file }}
+        else
+          npx playwright test
+        fi
+
+    # Restored your exact artifact configuration
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
