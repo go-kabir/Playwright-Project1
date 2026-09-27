@@ -6,7 +6,9 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.62.1",
-    "@types/node": "^26.1.2"
+    "@types/node": "^26.1.2",
+    "allure-commandline": "^2.46.1",
+    "allure-playwright": "^3.12.2"
   },
   "scripts": {}
 }

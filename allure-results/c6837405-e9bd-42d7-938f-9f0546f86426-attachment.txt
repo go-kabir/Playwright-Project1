@@ -1,0 +1,24 @@
+--- Raw File Content ---
+[
+  'yes', 'no',   'yes',
+  'no',  'yes',  'no',
+  'yes', 'no',   'yes',
+  'no',  'OKAY'
+]
+yes
+no
+yes
+no
+yes
+no
+yes
+no
+yes
+no
+OKAY
+11
+{ yes: 5, no: 5, OKAY: 1 }
+number of Yes is 5
+yes: 5
+no: 5
+OKAY: 1
